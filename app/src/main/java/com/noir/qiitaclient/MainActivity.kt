@@ -1,32 +1,32 @@
 package com.noir.qiitaclient
 
 import android.os.Bundle
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.noir.qiitaclient.model.Article
 import com.noir.qiitaclient.model.User
-import com.noir.qiitaclient.view.ArticleView
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-//    setContentView(R.layout.activity_main)
+    setContentView(R.layout.activity_main)
 
-    // ArticleViewオブジェクトを生成
-    val articieView = ArticleView(applicationContext)
-
-    // Articleオブジェクトを生成して、ArticleViewオブジェクトにセット
-    articieView.setArticle(
-      Article(
-        id = "123",
-        title = "Kotlin入門",
-        url = "http://www.example.com/articles/123",
-        user = User(id = "456", name = "たろう", profileImageUrl = "")
-      )
+    val listAdapter = ArticleListAdapter(applicationContext)
+    listAdapter.articles = listOf(
+      dummyArticle("Kotlin入門", "たろう"),
+      dummyArticle("Java入門", "じろう")
     )
 
-    // このアクティビティにArticleViewをセット
-    setContentView(articieView)
+    val listView: ListView = findViewById(R.id.list_view) as ListView
+    listView.adapter = listAdapter
+  }
 
+  // ダミー記事を生成するメソッド
+  private fun dummyArticle(title: String, userName: String): Article {
+    return Article(
+      id = "", title = title, url = "https://kotlinlang.org/",
+      user = User(id = "", name = userName, profileImageUrl = "")
+    )
   }
 }
