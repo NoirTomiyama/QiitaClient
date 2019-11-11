@@ -38,4 +38,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    def rxlifecycleVersion = '0.6.1'
+    implementation "com.trello:rxlifecycle-kotlin:$rxlifecycleVersion"
+    implementation "com.trello:rxlifecycle-components:$rxlifecycleVersion"
 }
